@@ -1,0 +1,12 @@
+# Rust 编译产物(体积大、可重新生成)
+/target
+
+# 备份/临时文件
+**/*.rs.bk
+*.pdb
+
+# 操作系统 / 编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
