@@ -14,9 +14,22 @@ use embassy_stm32::rcc::{
 };
 use embassy_stm32::time::Hertz;
 
-/// 板载晶振频率。WeAct STM32F411「黑药丸」= 25MHz。
+/// 目标芯片型号(人类可读,仅用于日志/诊断)。
+pub const TARGET_CHIP: &str = "STM32F411CE";
+
+/// 板型名称(人类可读,仅用于日志/诊断)。
+pub const BOARD_NAME: &str = "WeAct BlackPill";
+
+/// 板载晶振频率(Hz)。WeAct STM32F411「黑药丸」= 25 MHz。
 /// ⚠️ 换板子先核对板上晶振丝印!填错会导致所有时序/波特率出错,甚至开机卡死。
-const HSE_FREQ: Hertz = Hertz(25_000_000);
+/// 改这里通常要同步改下面 [`Board::clock_config`] 的 PLL 分频——它们是一次逻辑改动。
+pub const HSE_HZ: u32 = 25_000_000;
+
+/// 目标系统时钟(Hz),仅用于日志展示;真正的分频在 [`Board::clock_config`] 里。
+pub const SYSCLK_HZ: u32 = 96_000_000;
+
+/// 板载晶振频率,包成 HAL 需要的 [`Hertz`] 类型。
+const HSE_FREQ: Hertz = Hertz(HSE_HZ);
 
 /// 板载用户 LED 的类型别名。
 /// 对外只暴露这个名字,应用层不需要知道它实际接在 PC13。
