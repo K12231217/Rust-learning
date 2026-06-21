@@ -10,7 +10,7 @@ defmt = "1.1.0"
 defmt-rtt = "1.2.0"
 embassy-executor = { version = "0.10.0", features = ["platform-cortex-m", "executor-thread", "defmt"] }
 embassy-futures = "0.1.2"
-embassy-stm32 = { version = "0.6.0", features = ["stm32f411ce", "memory-x", "time-driver-any", "defmt"] }
+embassy-stm32 = { version = "0.6.0", features = ["stm32f411ce", "memory-x", "time-driver-any", "exti", "defmt"] }
 embassy-sync = { version = "0.6.2", features = ["defmt"] }
 embassy-time = { version = "0.5.1", features = ["defmt", "defmt-timestamp-uptime"] }
 panic-probe = { version = "1.0.0", features = ["print-defmt"] }
